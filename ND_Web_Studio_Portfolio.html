@@ -1,0 +1,1840 @@
+<!doctype html>
+<html lang="ru">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#0b0c0e">
+  <link rel="icon"
+    href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Crect width=%2764%27 height=%2764%27 rx=%2718%27 fill=%27%23f4f5f1%27/%3E%3Ctext x=%2732%27 y=%2740%27 text-anchor=%27middle%27 font-family=%27Arial,sans-serif%27 font-size=%2721%27 font-weight=%27900%27 fill=%27%230b0c0e%27%3END%3C/text%3E%3C/svg%3E">
+  <title>ND Web Studio — сайты для бизнеса</title>
+  <meta name="description"
+    content="ND Web Studio создаёт современные сайты для ресторанов и других бизнесов: Договорная цена, запуск от одного дня, бесплатные правки.">
+  <meta property="og:title" content="ND Web Studio — сайты для бизнеса">
+  <meta property="og:description"
+    content="ND Web Studio создаёт современные сайты для ресторанов и других бизнесов: Договорная цена, запуск от одного дня, бесплатные правки.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="ND Web Studio — сайты для бизнеса">
+  <meta name="twitter:description"
+    content="ND Web Studio создаёт современные сайты для ресторанов и других бизнесов: Договорная цена, запуск от одного дня, бесплатные правки.">
+  <meta name="google-site-verification" content="PEVoV-OujJDZ-L6k3Af3i6e227MFZh41Ft1e2aQ4CGQ" />
+  <style>
+    * {
+      box-sizing: border-box
+    }
+
+    :root {
+      --bg: #0b0c0e;
+      --panel: #15181b;
+      --panel2: #202328;
+      --ink: #f4f5f1;
+      --muted: #9ca39a;
+      --accent: #b8ff3d;
+      --line: rgba(244, 245, 241, .13)
+    }
+
+    html {
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+      background: var(--bg)
+    }
+
+    body {
+      margin: 0;
+      overflow-x: hidden;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif
+    }
+
+    button,
+    a {
+      font: inherit;
+      -webkit-tap-highlight-color: transparent
+    }
+
+    button {
+      cursor: pointer
+    }
+
+    a {
+      color: inherit
+    }
+
+    .site {
+      min-height: 100vh;
+      background: radial-gradient(circle at 82% 8%, rgba(184, 255, 61, .08), transparent 26rem), var(--bg)
+    }
+
+    .grain {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 80;
+      opacity: .11;
+      background-image: radial-gradient(rgba(255, 255, 255, .22) .45px, transparent .45px);
+      background-size: 5px 5px
+    }
+
+    .topbar {
+      position: fixed;
+      top: 16px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 60;
+      width: min(1180px, calc(100% - 32px));
+      min-height: 70px;
+      padding: 10px 12px 10px 16px;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 18px;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: rgba(11, 12, 14, .78);
+      backdrop-filter: blur(22px);
+      box-shadow: 0 18px 60px rgba(0, 0, 0, .28)
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none
+    }
+
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 13px;
+      background: var(--ink);
+      color: var(--bg);
+      font-size: 13px;
+      font-weight: 950
+    }
+
+    .brand-copy {
+      display: grid;
+      font-size: 13px;
+      font-weight: 800
+    }
+
+    .brand-copy small {
+      font-size: 10px;
+      color: var(--muted);
+      font-weight: 600
+    }
+
+    .navlinks {
+      display: flex;
+      gap: 4px;
+      padding: 5px;
+      border-radius: 14px;
+      background: rgba(255, 255, 255, .04)
+    }
+
+    .navlinks a {
+      padding: 10px 13px;
+      border-radius: 10px;
+      color: #cdd1ca;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 700;
+      transition: .22s
+    }
+
+    .navlinks a:hover {
+      background: rgba(255, 255, 255, .06);
+      color: #fff
+    }
+
+    .menu-btn {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--line);
+      border-radius: 13px;
+      background: rgba(255, 255, 255, .04);
+      color: var(--ink);
+      transition: .22s;
+      padding: 0
+    }
+
+    .menu-btn:hover {
+      background: rgba(255, 255, 255, .08);
+      transform: translateY(-2px)
+    }
+
+    .menu-btn span,
+    .menu-btn span:before,
+    .menu-btn span:after {
+      content: "";
+      display: block;
+      width: 17px;
+      height: 1.5px;
+      background: currentColor;
+      border-radius: 2px;
+      position: relative
+    }
+
+    .menu-btn span:before {
+      position: absolute;
+      top: -5px;
+      left: 0
+    }
+
+    .menu-btn span:after {
+      position: absolute;
+      top: 5px;
+      left: 0
+    }
+
+    .menu-panel {
+      position: fixed;
+      top: 96px;
+      right: max(16px, calc((100vw - 1180px)/2));
+      z-index: 65;
+      width: min(300px, calc(100vw - 32px));
+      padding: 8px;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: rgba(17, 19, 21, .96);
+      backdrop-filter: blur(22px);
+      box-shadow: 0 24px 70px rgba(0, 0, 0, .45);
+      display: none
+    }
+
+    .menu-panel.show {
+      display: grid;
+      animation: menuin .18s ease
+    }
+
+    .menu-panel a {
+      padding: 15px 16px;
+      border-radius: 13px;
+      color: var(--ink);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 800
+    }
+
+    .menu-panel a:hover {
+      background: rgba(255, 255, 255, .05)
+    }
+
+    .menu-panel small {
+      padding: 10px 16px 6px;
+      color: var(--muted);
+      font-size: 9px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      font-weight: 900
+    }
+
+    .nav-cta {
+      justify-self: end;
+      min-height: 46px;
+      padding: 0 17px;
+      border: 0;
+      border-radius: 14px;
+      background: var(--accent);
+      color: #10140b;
+      font-size: 12px;
+      font-weight: 900;
+      transition: .22s
+    }
+
+    .nav-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(184, 255, 61, .15)
+    }
+
+    .hero {
+      width: min(1240px, calc(100% - 40px));
+      min-height: 860px;
+      margin: auto;
+      padding: 160px 0 90px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.02fr) minmax(420px, .98fr);
+      align-items: center;
+      gap: 52px
+    }
+
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #c7ccc4;
+      text-transform: uppercase;
+      letter-spacing: .14em;
+      font-size: 10px;
+      font-weight: 800
+    }
+
+    .eyebrow i {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 20px rgba(184, 255, 61, .55)
+    }
+
+    .hero h1 {
+      margin: 25px 0 26px;
+      font-size: clamp(58px, 7.1vw, 112px);
+      line-height: .87;
+      letter-spacing: -.072em;
+      font-weight: 950
+    }
+
+    .hero h1 em,
+    .heading h2 em,
+    .contact h2 em {
+      font-style: normal;
+      color: var(--muted);
+      font-weight: 700
+    }
+
+    .lead {
+      max-width: 680px;
+      color: #b7bcb4;
+      font-size: clamp(16px, 1.5vw, 20px);
+      line-height: 1.55
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 34px
+    }
+
+    .actions button,
+    .actions a {
+      min-height: 58px;
+      padding: 0 23px;
+      border-radius: 17px;
+      font-size: 13px;
+      font-weight: 900;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 34px;
+      text-decoration: none
+    }
+
+    .actions .primary {
+      border: 0;
+      background: var(--ink);
+      color: #0c0e0d
+    }
+
+    .actions .secondary {
+      border: 1px solid var(--line);
+      background: transparent
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 42px
+    }
+
+    .chips span {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 8px 11px;
+      color: #aeb4ab;
+      font-size: 10px;
+      font-weight: 700
+    }
+
+    .stage {
+      position: relative;
+      min-height: 560px;
+      perspective: 1200px
+    }
+
+    .ring {
+      position: absolute;
+      border: 1px solid rgba(184, 255, 61, .13);
+      border-radius: 50%;
+      pointer-events: none
+    }
+
+    .r1 {
+      width: 460px;
+      height: 460px;
+      right: -70px;
+      top: 20px;
+      animation: spin 12s linear infinite
+    }
+
+    .r2 {
+      width: 310px;
+      height: 310px;
+      left: 10px;
+      bottom: 0;
+      animation: spin 9s linear infinite reverse
+    }
+
+    .window {
+      position: absolute;
+      border: 1px solid rgba(255, 255, 255, .17);
+      border-radius: 24px;
+      background: rgba(29, 32, 35, .94);
+      box-shadow: 0 34px 90px rgba(0, 0, 0, .42);
+      color: var(--ink);
+      overflow: hidden;
+      text-align: left
+    }
+
+    .main-window {
+      width: min(520px, 92%);
+      height: 390px;
+      top: 62px;
+      left: 0;
+      transform: rotateY(-6deg) rotateX(2deg);
+      transition: .35s
+    }
+
+    .main-window:hover {
+      transform: rotateY(-2deg) translateY(-8px);
+      border-color: rgba(184, 255, 61, .44)
+    }
+
+    .windowbar {
+      height: 46px;
+      padding: 0 16px;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      border-bottom: 1px solid var(--line)
+    }
+
+    .windowbar i,
+    .modalbar i {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #5a5f59;
+      display: block
+    }
+
+    .windowbar small {
+      margin-left: 10px;
+      color: #777e76;
+      font-size: 9px
+    }
+
+    .windowbody {
+      height: calc(100% - 46px);
+      padding: 42px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      background: radial-gradient(circle at 80% 15%, rgba(184, 255, 61, .16), transparent 180px), linear-gradient(145deg, #15171a, #222629)
+    }
+
+    .windowbody>small {
+      color: var(--accent);
+      font-size: 9px;
+      font-weight: 900;
+      letter-spacing: .14em
+    }
+
+    .windowbody strong {
+      font-size: clamp(30px, 3.2vw, 48px);
+      line-height: .92;
+      letter-spacing: -.055em
+    }
+
+    .windowbody b {
+      margin-top: 24px;
+      width: max-content;
+      padding: 10px 12px;
+      border-radius: 10px;
+      background: var(--accent);
+      color: #15190e;
+      font-size: 9px
+    }
+
+    .stat-window {
+      width: 190px;
+      height: 120px;
+      right: -8px;
+      top: 10px;
+      transform: rotate(7deg);
+      animation: float 5s ease-in-out infinite
+    }
+
+    .stat-window .windowbar {
+      height: 33px
+    }
+
+    .stat-window strong,
+    .stat-window small {
+      display: block;
+      margin-left: 16px
+    }
+
+    .stat-window strong {
+      margin-top: 14px;
+      font-size: 20px
+    }
+
+    .stat-window small {
+      color: var(--muted);
+      font-size: 10px
+    }
+
+    .online {
+      position: absolute;
+      right: 8px;
+      bottom: 15px;
+      width: 210px;
+      min-height: 86px;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: #191c1f;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 3px 10px;
+      transform: rotate(-5deg);
+      animation: float 6s ease-in-out infinite reverse
+    }
+
+    .online i {
+      grid-row: 1/3;
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 20px rgba(184, 255, 61, .6);
+      align-self: center
+    }
+
+    .online b {
+      font-size: 11px
+    }
+
+    .online small {
+      font-size: 9px;
+      color: var(--muted)
+    }
+
+    .ticker {
+      overflow: hidden;
+      border-block: 1px solid var(--line);
+      background: #0f1113
+    }
+
+    .ticker div {
+      width: max-content;
+      padding: 18px 0;
+      color: #aeb4ab;
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: .13em;
+      animation: marquee 28s linear infinite
+    }
+
+    .ticker b {
+      color: var(--accent);
+      margin: 0 26px
+    }
+
+    .shell {
+      width: min(1180px, calc(100% - 40px));
+      margin: auto;
+      padding: 120px 0
+    }
+
+    .heading {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 28px;
+      margin-bottom: 58px
+    }
+
+    .heading>p,
+    .price-top p {
+      margin: 5px 0 0;
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .11em;
+      text-transform: uppercase
+    }
+
+    .heading h2 {
+      margin: 0;
+      font-size: clamp(42px, 6.4vw, 88px);
+      line-height: .92;
+      letter-spacing: -.065em
+    }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      border-top: 1px solid var(--line);
+      border-left: 1px solid var(--line)
+    }
+
+    .service-grid article {
+      min-height: 250px;
+      padding: 32px;
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: linear-gradient(135deg, rgba(255, 255, 255, .018), transparent);
+      transition: .25s
+    }
+
+    .service-grid article:hover {
+      background: rgba(184, 255, 61, .035);
+      transform: translateY(-3px)
+    }
+
+    .service-grid small {
+      color: var(--accent);
+      font-weight: 900
+    }
+
+    .service-grid h3 {
+      margin: 55px 0 14px;
+      font-size: 26px;
+      letter-spacing: -.045em
+    }
+
+    .service-grid p {
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 14px
+    }
+
+    .wide {
+      width: 100%;
+      margin-top: 14px;
+      min-height: 64px;
+      padding: 0 22px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: rgba(255, 255, 255, .03);
+      color: var(--ink);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-weight: 800
+    }
+
+    .wide span {
+      color: var(--accent)
+    }
+
+    .steps {
+      border-top: 1px solid var(--line)
+    }
+
+    .step {
+      min-height: 110px;
+      display: grid;
+      grid-template-columns: 80px 1fr auto;
+      gap: 20px;
+      align-items: center;
+      border-bottom: 1px solid var(--line)
+    }
+
+    .step>b {
+      color: var(--muted);
+      font-size: 10px
+    }
+
+    .step span {
+      display: grid;
+      gap: 5px
+    }
+
+    .step strong {
+      font-size: clamp(18px, 2vw, 28px);
+      letter-spacing: -.035em
+    }
+
+    .step small {
+      color: var(--muted)
+    }
+
+    .step i {
+      color: var(--accent);
+      font-style: normal;
+      font-size: 24px
+    }
+
+    .project-heading {
+      grid-template-columns: 180px 1fr 220px
+    }
+
+    .project-heading>span {
+      align-self: end;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.5
+    }
+
+    .project-list {
+      display: grid;
+      gap: 12px
+    }
+
+    .project {
+      width: 100%;
+      min-height: 210px;
+      padding: 20px 22px;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: #111315;
+      color: var(--ink);
+      display: grid;
+      grid-template-columns: 50px 220px 1fr 50px;
+      gap: 24px;
+      align-items: center;
+      text-align: left;
+      transition: .28s
+    }
+
+    .project:hover {
+      transform: translateX(8px);
+      border-color: rgba(184, 255, 61, .35);
+      background: #171a1d
+    }
+
+    .project>small {
+      color: var(--muted)
+    }
+
+    .thumb {
+      height: 165px;
+      border-radius: 17px;
+      background: #202326;
+      display: grid;
+      place-items: center;
+      font-size: 50px;
+      font-style: normal;
+      position: relative;
+      overflow: hidden
+    }
+
+    .thumb:before,
+    .thumb:after {
+      content: "";
+      position: absolute;
+      border: 1px solid rgba(255, 255, 255, .16);
+      border-radius: 12px
+    }
+
+    .thumb:before {
+      width: 72%;
+      height: 60%;
+      transform: rotate(-5deg)
+    }
+
+    .thumb:after {
+      width: 50%;
+      height: 40%;
+      transform: translate(25px, 20px) rotate(5deg)
+    }
+
+    .thumb.q {
+      background: radial-gradient(circle at 30% 20%, rgba(184, 255, 61, .3), transparent 55%), #1a1d19
+    }
+
+    .thumb.d {
+      background: #20252a
+    }
+
+    .thumb.b {
+      background: radial-gradient(circle at 55% 20%, rgba(184, 255, 61, .16), transparent 42%), #13171b
+    }
+
+    .thumb.n {
+      background: radial-gradient(circle at 50% 25%, rgba(184, 255, 61, .22), transparent 45%), #171a1d
+    }
+
+    .project>span {
+      display: grid
+    }
+
+    .project em {
+      color: var(--accent);
+      font-size: 9px;
+      font-style: normal;
+      font-weight: 900
+    }
+
+    .project strong {
+      margin: 8px 0 12px;
+      font-size: clamp(24px, 3vw, 38px);
+      letter-spacing: -.055em
+    }
+
+    .project p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 12px
+    }
+
+    .project>b {
+      display: grid;
+      place-items: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: #11150b;
+      font-size: 17px
+    }
+
+    .price {
+      min-height: 560px;
+      padding: clamp(28px, 5vw, 64px);
+      border-radius: 36px;
+      background: var(--ink);
+      color: #101311;
+      display: grid;
+      align-content: space-between
+    }
+
+    .price-top {
+      display: flex;
+      justify-content: space-between
+    }
+
+    .price-top small {
+      color: #687068
+    }
+
+    .price-main {
+      display: grid
+    }
+
+    .price-main small {
+      color: #6f756e;
+      text-transform: uppercase;
+      font-size: 10px;
+      font-weight: 900
+    }
+
+    .price-main strong {
+      font-size: clamp(42px, 7vw, 92px);
+      letter-spacing: -.07em;
+      line-height: .92
+    }
+
+    .price-main em {
+      font-style: normal
+    }
+
+    .price-points {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px
+    }
+
+    .price-points b {
+      padding: 9px 12px;
+      border: 1px solid rgba(16, 19, 17, .17);
+      border-radius: 999px;
+      font-size: 10px
+    }
+
+    .price>button {
+      min-height: 64px;
+      padding: 0 22px;
+      border: 0;
+      border-radius: 17px;
+      background: #111411;
+      color: var(--ink);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 900
+    }
+
+    .faq-list {
+      border-top: 1px solid var(--line)
+    }
+
+    .faq-item {
+      width: 100%;
+      padding: 0;
+      border: 0;
+      border-bottom: 1px solid var(--line);
+      background: transparent;
+      color: var(--ink);
+      text-align: left
+    }
+
+    .faq-item>span {
+      min-height: 92px;
+      display: grid;
+      grid-template-columns: 70px 1fr auto;
+      gap: 15px;
+      align-items: center
+    }
+
+    .faq-item b {
+      color: var(--muted);
+      font-size: 10px
+    }
+
+    .faq-item strong {
+      font-size: clamp(17px, 2.2vw, 25px)
+    }
+
+    .faq-item i {
+      color: var(--accent);
+      font-size: 24px;
+      font-style: normal
+    }
+
+    .faq-item p {
+      max-width: 760px;
+      margin: 0 0 0 85px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      transition: .3s
+    }
+
+    .faq-item.open p {
+      max-height: 150px;
+      opacity: 1;
+      margin-bottom: 28px
+    }
+
+    .contact {
+      padding: clamp(30px, 6vw, 76px);
+      border: 1px solid var(--line);
+      border-radius: 36px;
+      background: radial-gradient(circle at 82% 30%, rgba(184, 255, 61, .14), transparent 28rem), #111315
+    }
+
+    .contact>p,
+    .text-modal>p {
+      color: var(--accent);
+      font-size: 10px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: .12em
+    }
+
+    .contact h2 {
+      margin: 44px 0 50px;
+      font-size: clamp(44px, 7vw, 94px);
+      line-height: .9;
+      letter-spacing: -.068em
+    }
+
+    .contact>a {
+      min-height: 78px;
+      padding: 0 22px;
+      border-radius: 18px;
+      background: var(--accent);
+      color: #11140c;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-weight: 900
+    }
+
+    .socials {
+      display: flex;
+      gap: 20px;
+      margin-top: 20px
+    }
+
+    .socials a {
+      color: var(--muted);
+      font-size: 11px
+    }
+
+    footer {
+      width: min(1180px, calc(100% - 40px));
+      min-height: 110px;
+      margin: auto;
+      border-top: 1px solid var(--line);
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      color: var(--muted);
+      font-size: 10px
+    }
+
+    footer>b {
+      color: var(--ink)
+    }
+
+    footer a {
+      justify-self: end;
+      color: var(--muted)
+    }
+
+    .nav-right {
+      justify-self: end;
+      display: flex;
+      align-items: center;
+      gap: 8px
+    }
+
+    .lang-switch {
+      display: flex;
+      gap: 2px;
+      padding: 3px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: rgba(20, 22, 24, .82);
+      backdrop-filter: blur(14px)
+    }
+
+    .lang-switch button {
+      border: 0;
+      background: transparent;
+      color: #7f867d;
+      padding: 8px 8px;
+      border-radius: 8px;
+      font-size: 9px;
+      font-weight: 900
+    }
+
+    .lang-switch button.active {
+      background: var(--ink);
+      color: #11140e
+    }
+
+    .overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      padding: 0;
+      background: rgba(4, 5, 6, .8);
+      backdrop-filter: blur(14px);
+      display: none;
+      place-items: center
+    }
+
+    .overlay.show {
+      display: grid
+    }
+
+    .modal {
+      width: 100%;
+      height: 100%;
+      border: 1px solid rgba(255, 255, 255, .18);
+      border-radius: 0;
+      background: #111315;
+      overflow: hidden;
+      box-shadow: 0 45px 130px rgba(0, 0, 0, .65);
+      animation: pop .25s ease
+    }
+
+    .modalbar {
+      height: 58px;
+      padding: 0 14px 0 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--line);
+      background: #181b1e
+    }
+
+    .modalbar>div {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      min-width: 0
+    }
+
+    .modalbar b {
+      margin-left: 10px;
+      color: #858c83;
+      font-size: 9px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis
+    }
+
+    .modalbar button {
+      width: 36px;
+      height: 36px;
+      border: 1px solid var(--line);
+      border-radius: 11px;
+      background: #202326;
+      color: var(--ink);
+      font-size: 21px
+    }
+
+    .project-modal {
+      height: calc(100% - 58px);
+      display: grid;
+      grid-template-rows: 1fr auto
+    }
+
+    .project-modal iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+      background: #fff
+    }
+
+    .project-modal aside {
+      min-height: 78px;
+      padding: 12px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center
+    }
+
+    .project-modal aside span {
+      display: grid
+    }
+
+    .project-modal aside small {
+      color: var(--muted)
+    }
+
+    .project-modal aside a,
+    .tg {
+      padding: 13px 15px;
+      border-radius: 12px;
+      background: var(--accent);
+      color: #10140b;
+      text-decoration: none;
+      font-size: 10px;
+      font-weight: 900
+    }
+
+    .text-modal {
+      height: calc(100% - 58px);
+      padding: clamp(28px, 6vw, 76px);
+      overflow: auto;
+      overscroll-behavior: contain;
+      -webkit-overflow-scrolling: touch
+    }
+
+    .text-modal h3 {
+      margin: 20px 0 45px;
+      max-width: 820px;
+      font-size: clamp(38px, 6vw, 78px);
+      line-height: .93;
+      letter-spacing: -.06em
+    }
+
+    .caps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid var(--line);
+      border-left: 1px solid var(--line)
+    }
+
+    .caps span {
+      min-height: 90px;
+      padding: 20px;
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      align-items: flex-end;
+      color: #c8cdc5;
+      font-size: 12px;
+      font-weight: 800
+    }
+
+    .text-modal>button {
+      margin-top: 22px;
+      min-height: 58px;
+      padding: 0 20px;
+      border: 0;
+      border-radius: 15px;
+      background: var(--accent);
+      color: #11140c;
+      font-weight: 900
+    }
+
+    .text-modal ol {
+      color: var(--muted);
+      line-height: 2;
+      margin-bottom: 36px
+    }
+
+    @keyframes menuin {
+      from {
+        opacity: 0;
+        transform: translateY(-8px) scale(.98)
+      }
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg)
+      }
+    }
+
+    @keyframes float {
+      50% {
+        transform: translateY(-10px) rotate(4deg)
+      }
+    }
+
+    @keyframes marquee {
+      to {
+        transform: translateX(-50%)
+      }
+    }
+
+    @keyframes pop {
+      from {
+        opacity: 0;
+        transform: translateY(14px) scale(.985)
+      }
+    }
+
+    @media(max-width:980px) {
+      .topbar {
+        grid-template-columns: 1fr auto
+      }
+
+      .navlinks {
+        display: none
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        min-height: auto;
+        padding-top: 145px
+      }
+
+      .stage {
+        min-height: 510px;
+        width: min(680px, 100%);
+        margin: auto
+      }
+
+      .heading,
+      .project-heading {
+        grid-template-columns: 1fr
+      }
+
+      .project {
+        grid-template-columns: 40px 180px 1fr 50px
+      }
+    }
+
+    @media(max-width:680px) {
+      .nav-right {
+        gap: 5px
+      }
+
+      .menu-btn {
+        width: 38px;
+        height: 38px
+      }
+
+      .lang-switch button {
+        padding: 7px 6px
+      }
+
+      .grain {
+        display: none
+      }
+
+      .topbar {
+        top: 10px;
+        width: calc(100% - 20px);
+        min-height: 60px;
+        padding: 7px 8px 7px 10px;
+        border-radius: 18px
+      }
+
+      .brand-mark {
+        width: 38px;
+        height: 38px
+      }
+
+      .brand-copy {
+        display: none
+      }
+
+      .nav-cta {
+        min-height: 42px;
+        padding: 0 13px
+      }
+
+      .hero,
+      .shell,
+      footer {
+        width: calc(100% - 32px)
+      }
+
+      .hero {
+        padding: 120px 0 56px;
+        gap: 10px
+      }
+
+      .hero h1 {
+        font-size: clamp(50px, 15.5vw, 76px)
+      }
+
+      .lead {
+        font-size: 15px
+      }
+
+      .actions {
+        display: grid
+      }
+
+      .actions button,
+      .actions a {
+        width: 100%
+      }
+
+      .stage {
+        min-height: 390px
+      }
+
+      .r1 {
+        width: 320px;
+        height: 320px;
+        right: -120px
+      }
+
+      .r2 {
+        width: 200px;
+        height: 200px;
+        left: -70px
+      }
+
+      .main-window {
+        width: 94%;
+        height: 300px;
+        left: 0;
+        top: 46px
+      }
+
+      .windowbody {
+        padding: 25px
+      }
+
+      .windowbody strong {
+        font-size: 32px
+      }
+
+      .stat-window {
+        width: 132px;
+        height: 92px;
+        right: -6px
+      }
+
+      .online {
+        width: 150px;
+        min-height: 66px;
+        padding: 12px
+      }
+
+      .shell {
+        padding: 78px 0
+      }
+
+      .heading {
+        margin-bottom: 34px
+      }
+
+      .heading h2 {
+        font-size: clamp(39px, 12vw, 58px)
+      }
+
+      .service-grid {
+        grid-template-columns: 1fr
+      }
+
+      .service-grid article {
+        min-height: 210px;
+        padding: 24px
+      }
+
+      .service-grid h3 {
+        margin-top: 42px;
+        font-size: 22px
+      }
+
+      .step {
+        grid-template-columns: 38px 1fr auto;
+        gap: 10px;
+        min-height: 104px
+      }
+
+      .step small {
+        font-size: 10px
+      }
+
+      .project {
+        min-height: 0;
+        grid-template-columns: 1fr auto;
+        grid-template-areas: "thumb go" "info info";
+        padding: 12px;
+        gap: 14px
+      }
+
+      .project>small {
+        display: none
+      }
+
+      .thumb {
+        grid-area: thumb;
+        width: 150px;
+        height: 105px
+      }
+
+      .project>span {
+        grid-area: info;
+        padding: 0 5px 7px
+      }
+
+      .project>b {
+        grid-area: go;
+        align-self: start
+      }
+
+      .project strong {
+        font-size: 25px
+      }
+
+      .project p {
+        font-size: 11px
+      }
+
+      .price {
+        min-height: 540px;
+        border-radius: 27px
+      }
+
+      .price-top {
+        display: grid
+      }
+
+      .price-main strong {
+        font-size: clamp(40px, 13vw, 64px)
+      }
+
+      .price-points {
+        display: grid;
+        grid-template-columns: 1fr 1fr
+      }
+
+      .price-points b {
+        border-radius: 13px
+      }
+
+      .faq-item>span {
+        grid-template-columns: 34px 1fr auto;
+        gap: 9px
+      }
+
+      .faq-item p {
+        margin-left: 43px
+      }
+
+      .contact {
+        border-radius: 27px
+      }
+
+      .contact h2 {
+        font-size: clamp(42px, 12vw, 60px)
+      }
+
+      .socials {
+        display: grid
+      }
+
+      .overlay {
+        padding: 0
+      }
+
+      .modal {
+        height: 100dvh;
+        border-radius: 0
+      }
+
+      .modalbar {
+        height: 52px
+      }
+
+      .modalbar b {
+        max-width: 210px
+      }
+
+      .project-modal {
+        height: calc(100% - 52px)
+      }
+
+      .project-modal aside {
+        min-height: 70px;
+        padding: 10px 12px
+      }
+
+      .project-modal aside small {
+        display: none
+      }
+
+      .text-modal {
+        height: calc(100% - 52px);
+        padding: 25px 18px
+      }
+
+      .text-modal h3 {
+        font-size: clamp(38px, 11vw, 54px)
+      }
+
+      .caps {
+        grid-template-columns: repeat(2, 1fr)
+      }
+
+      .caps span {
+        min-height: 76px;
+        padding: 14px
+      }
+
+      footer span {
+        display: none
+      }
+
+      footer {
+        grid-template-columns: 1fr auto
+      }
+    }
+
+    @media(max-width:380px) {
+
+      .hero,
+      .shell,
+      footer {
+        width: calc(100% - 24px)
+      }
+
+      .hero h1 {
+        font-size: 48px
+      }
+
+      .thumb {
+        width: 125px
+      }
+
+      .price-points {
+        grid-template-columns: 1fr
+      }
+
+      .nav-cta {
+        padding-inline: 10px
+      }
+    }
+
+    @media(prefers-reduced-motion:reduce) {
+      html {
+        scroll-behavior: auto
+      }
+
+      *,
+      *:before,
+      *:after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="site">
+    <div class="grain"></div>
+
+    <header class="topbar">
+      <a class="brand" href="#top"><span class="brand-mark">ND</span><span class="brand-copy">Web Studio<small>Digital
+            for business</small></span></a>
+      <nav class="navlinks"><a href="#services">Услуги</a><a href="#projects">Проекты</a><a href="#price">Цена</a></nav>
+      <div class="nav-right"><button class="menu-btn" id="menu-btn" aria-label="Меню"
+          aria-expanded="false"><span></span></button>
+        <div class="lang-switch" aria-label="Language"><button class="active" data-lang="ru">RU</button><button
+            data-lang="uz">UZ</button><button data-lang="en">EN</button></div><button class="nav-cta"
+          data-modal="contact">Обсудить сайт ↗</button>
+      </div>
+      <div class="menu-panel" id="menu-panel" aria-hidden="true"><small>Навигация</small><a href="#top">Главная</a><a
+          href="#services">Услуги</a><a href="#projects">Проекты</a><a href="#price">Цена</a><a
+          href="#contact">Контакты</a></div>
+    </header>
+
+    <section class="hero" id="top">
+      <div>
+        <p class="eyebrow"><i></i> Сайты для бизнеса · Ташкент / онлайн</p>
+        <h1>Ваш бизнес.<br><em>Но уже в интернете.</em></h1>
+        <p class="lead">Nd Web Studio создаёт современные сайты для ресторанов и других бизнесов: под ваш стиль, с
+          нужными фото, меню, музыкой, контактами и функциями.</p>
+        <div class="actions"><button class="primary" data-modal="contact">Заказать сайт <b>↗</b></button><a
+            class="secondary" href="#projects">Смотреть проекты <b>↓</b></a><a class="secondary"
+            href="https://t.me/Nodir01092011" target="_blank" rel="noopener">Telegram <b>↗</b></a></div>
+        <div class="chips"><span>Договорная цена</span><span>Сайт от 1 дня</span><span>Правки бесплатно</span></div>
+      </div>
+      <div class="stage">
+        <div class="ring r1"></div>
+        <div class="ring r2"></div>
+        <button class="window main-window" data-project="qalbinur"><span
+            class="windowbar"><i></i><i></i><i></i><small>restaurant.uz</small></span><span
+            class="windowbody"><small>ЦИФРОВОЙ ОПЫТ</small><strong>Сайт, который<br>выглядит дороже.</strong><b>Открыть
+              проект ↗</b></span></button>
+        <div class="window stat-window"><span class="windowbar"><i></i><i></i><i></i></span><strong>1
+            день</strong><small>на запуск</small></div>
+        <div class="online"><i></i><b>ОНЛАЙН</b><small>готов принимать клиентов</small></div>
+      </div>
+    </section>
+
+    <section class="ticker">
+      <div>САЙТ ЗА 1 ДЕНЬ <b>✦</b> ЛЮБОЙ ДИЗАЙН <b>✦</b> БЕСПЛАТНЫЕ ПРАВКИ <b>✦</b> ДОМЕН ПОДКЛЮЧУ <b>✦</b> ПОД ТЕЛЕФОН
+        И ПК <b>✦</b> САЙТ ЗА 1 ДЕНЬ <b>✦</b> ЛЮБОЙ ДИЗАЙН <b>✦</b></div>
+    </section>
+
+    <section class="shell" id="services">
+      <div class="heading">
+        <p>01 / Что я делаю</p>
+        <h2>Не шаблон.<br><em>Под ваш бизнес.</em></h2>
+      </div>
+      <div class="service-grid">
+        <article><small>01</small>
+          <h3>Дизайн под вкус бизнеса</h3>
+          <p>Подберу стиль, цвета, структуру и атмосферу: от спокойной премиальности до яркой подачи.</p>
+        </article>
+        <article><small>02</small>
+          <h3>Меню, фото, аудио</h3>
+          <p>Добавлю нужные блюда, услуги, галереи, музыку, кнопки, карты и контакты.</p>
+        </article>
+        <article><small>03</small>
+          <h3>Адаптация под устройства</h3>
+          <p>Сайт удобно выглядит на телефоне, планшете и компьютере без вылезающих блоков.</p>
+        </article>
+        <article><small>04</small>
+          <h3>Домен и запуск</h3>
+          <p>Подключу бесплатный адрес или ваш купленный домен и помогу довести сайт до запуска.</p>
+        </article>
+      </div>
+      <button class="wide" data-modal="services">Посмотреть полный список возможностей <span>↗</span></button>
+    </section>
+
+    <section class="shell">
+      <div class="heading">
+        <p>02 / Как работаем</p>
+        <h2>От сообщения<br>до готового сайта.</h2>
+      </div>
+      <div class="steps">
+        <div class="step"><b>01</b><span><strong>Вы пишете мне</strong><small>Telegram — самый быстрый
+              способ.</small></span><i>→</i></div>
+        <div class="step"><b>02</b><span><strong>Отправляете информацию</strong><small>Название, фото, меню, контакты и
+              пожелания.</small></span><i>→</i></div>
+        <div class="step"><b>03</b><span><strong>Я собираю сайт</strong><small>Дизайн, адаптация, анимации и
+              функционал.</small></span><i>→</i></div>
+        <div class="step"><b>04</b><span><strong>Вы проверяете</strong><small>Что нужно — исправляю
+              бесплатно.</small></span><i>✓</i></div>
+      </div>
+    </section>
+
+    <section class="shell" id="projects">
+      <div class="heading project-heading">
+        <p>03 / Реальные работы</p>
+        <h2>Не обещания.<br><em>Вот сайты.</em></h2><span>Нажмите на проект — он откроется внутри большого окна.</span>
+      </div>
+      <div class="project-list">
+        <button class="project" data-project="qalbinur"><small>01</small><i class="thumb q">Q</i><span><em>САЙТ
+              РЕСТОРАНА</em><strong>Qalbinur Restaurant</strong>
+            <p>Атмосферный сайт ресторана с быстрым контактом.</p>
+          </span><b>↗</b></button>
+        <button class="project" data-project="dunyo"><small>02</small><i class="thumb d">D</i><span><em>САЙТ
+              РЕСТОРАНА</em><strong>DUNYO Restaurant</strong>
+            <p>Большая адаптивная презентация ресторана.</p>
+          </span><b>↗</b></button>
+        <button class="project" data-project="bazar"><small>03</small><i class="thumb b">B</i><span><em>САЙТ
+              РЕСТОРАНА</em><strong>Bazar Restaurant</strong>
+            <p>Современная digital-витрина для бизнеса.</p>
+          </span><b>↗</b></button>
+        <button class="project" data-project="national"><small>04</small><i class="thumb n">N</i><span><em>САЙТ ДЛЯ
+              БИЗНЕСА</em><strong>National Instrumental Group</strong>
+            <p>Современный сайт National Instrumental Group с адаптацией под устройства.</p>
+          </span><b>↗</b></button>
+        <button class="project" data-project="meatme"><small>05</small><i class="thumb m">M</i><span><em>САЙТ
+              РЕСТОРАНА</em><strong>MeatMe Restaurant</strong>
+            <p>Современный сайт MeatMe Restaurant с адаптацией под устройства.</p>
+          </span><b>↗</b></button>
+        <button class="project" data-project="buyukada"><small>06</small><i class="thumb b">B</i><span><em>САЙТ
+              РЕСТОРАНА</em><strong>Buyukada Restaurant</strong>
+            <p>Современный сайт Buyukada Restaurant с адаптацией под устройства.</p>
+          </span><b>↗</b></button>
+      </div>
+    </section>
+
+    <section class="shell" id="price">
+      <div class="price">
+        <div class="price-top">
+          <p>04 / Стоимость</p><small>Прозрачно, без агентской накрутки.</small>
+        </div>
+        <div class="price-main"><small>Сайт для бизнеса</small><strong><em>Договорная цена</em></strong></div>
+        <div class="price-points"><b>✓ Индивидуальный дизайн</b><b>✓ Адаптация под телефон</b><b>✓ Бесплатные
+            правки</b><b>✓ Помощь с доменом</b></div>
+        <button data-modal="contact">Обсудить мой сайт <b>↗</b></button>
+      </div>
+    </section>
+
+    <section class="shell">
+      <div class="heading">
+        <p>05 / Вопросы</p>
+        <h2>Перед тем,<br>как написать.</h2>
+      </div>
+      <div class="faq-list">
+        <button class="faq-item open"><span><b>01</b><strong>Правда можно сделать сайт за один
+              день?</strong><i>−</i></span>
+          <p>Да, если у вас уже есть основная информация, фото и понятная структура. Более сложные сайты могут
+            потребовать больше времени.</p>
+        </button>
+        <button class="faq-item"><span><b>02</b><strong>Что можно изменить после готовности?</strong><i>+</i></span>
+          <p>Текст, фотографии, блоки, порядок, цвета и другие нужные детали можно поправить в рамках проекта.</p>
+        </button>
+        <button class="faq-item"><span><b>03</b><strong>Можно использовать свой домен?</strong><i>+</i></span>
+          <p>Да. Можно оставить бесплатный адрес или подключить купленный домен, например .com или .uz.</p>
+        </button>
+        <button class="faq-item"><span><b>04</b><strong>Вы делаете только рестораны?</strong><i>+</i></span>
+          <p>Нет. Рестораны — текущие примеры Nd Web Studio, но сайт можно сделать для почти любого понятного бизнеса
+            или услуги.</p>
+        </button>
+      </div>
+    </section>
+
+    <section class="shell" id="contact">
+      <div class="contact">
+        <p>Есть бизнес?</p>
+        <h2>Давайте сделаем ему<br><em>нормальный сайт.</em></h2>
+        <a href="https://t.me/Nodir01092011" target="_blank" rel="noopener">Написать в Nd Web Studio <b>↗</b></a>
+        <div class="socials"><a href="https://t.me/Nd_Web_Studio" target="_blank" rel="noopener">Telegram-канал ↗</a><a
+            href="https://www.instagram.com/nodir01092011?stkn=MW9jZHUzMzI4bXg2aQ==" target="_blank"
+            rel="noopener">Instagram ↗</a></div>
+      </div>
+    </section>
+
+    <footer><b>ND WEB STUDIO</b><span>Nd Web Studio · веб-сайты для бизнеса</span><a href="#top">Наверх ↑</a></footer>
+
+    <div class="overlay" id="overlay">
+      <section class="modal" role="dialog" aria-modal="true">
+        <header class="modalbar">
+          <div><i></i><i></i><i></i><b id="modal-address">nd-web-studio</b></div><button id="close"
+            aria-label="Закрыть">×</button>
+        </header>
+        <div id="modal-content"></div>
+      </section>
+    </div>
+  </div>
+
+  <script>
+    const projects = {
+      qalbinur: {title: "Qalbinur Restaurant", url: "https://qalbinur-restaurant.netlify.app/", note: "Атмосферный сайт ресторана с быстрым контактом."},
+      dunyo: {title: "DUNYO Restaurant", url: "https://dunyo-restaurant.netlify.app/", note: "Большая адаптивная презентация ресторана."},
+      bazar: {title: "Bazar Restaurant", url: "https://bazar-restaurant.netlify.app/", note: "Современная digital-витрина для бизнеса."},
+      national: {title: "National Instrumental Group", url: "https://national-instrumental-group.netlify.app/", note: "Современный сайт National Instrumental Group с адаптацией под устройства."},
+      meatme: {title: "MeatMe Restaurant", url: "https://meatme-restaurant.netlify.app/", note: "Современный сайт MeatMe Restaurant с адаптацией под устройства."},
+      buyukada: {title: "Buyukada Restaurant", url: "https://buyukada-restaurant.netlify.app/", note: "Современный сайт Buyukada Restaurant с адаптацией под устройства."}
+    };
+    let currentLang = "ru";
+    const translations = {
+      ru: {
+        "ND Web Studio — сайты для бизнеса": "ND Web Studio — сайты для бизнеса", "Web Studio": "Web Studio", "Digital for business": "Digital for business", "Услуги": "Услуги", "Проекты": "Проекты", "Цена": "Цена", "Обсудить сайт ↗": "Обсудить сайт ↗", "Сайты для бизнеса · Ташкент / онлайн": "Сайты для бизнеса · Ташкент / онлайн", "Ваш бизнес.": "Ваш бизнес.", "Но уже в интернете.": "Но уже в интернете.", "Nd Web Studio создаёт современные сайты для ресторанов и других бизнесов: под ваш стиль, с нужными фото, меню, музыкой, контактами и функциями.": "Nd Web Studio создаёт современные сайты для ресторанов и других бизнесов: под ваш стиль, с нужными фото, меню, музыкой, контактами и функциями.", "Заказать сайт": "Заказать сайт", "Смотреть проекты": "Смотреть проекты", "Telegram": "Telegram", "Главная": "Главная", "Навигация": "Навигация", "Контакты": "Контакты", "Договорная цена": "Договорная цена", "Сайт от 1 дня": "Сайт от 1 дня", "Правки бесплатно": "Правки бесплатно", "ЦИФРОВОЙ ОПЫТ": "ЦИФРОВОЙ ОПЫТ", "Сайт, который": "Сайт, который", "выглядит дороже.": "выглядит дороже.", "Открыть проект ↗": "Открыть проект ↗", "1 день": "1 день", "на запуск": "на запуск", "ОНЛАЙН": "ОНЛАЙН", "готов принимать клиентов": "готов принимать клиентов", "САЙТ ЗА 1 ДЕНЬ": "САЙТ ЗА 1 ДЕНЬ", "ЛЮБОЙ ДИЗАЙН": "ЛЮБОЙ ДИЗАЙН", "БЕСПЛАТНЫЕ ПРАВКИ": "БЕСПЛАТНЫЕ ПРАВКИ", "ДОМЕН ПОДКЛЮЧУ": "ДОМЕН ПОДКЛЮЧУ", "ПОД ТЕЛЕФОН И ПК": "ПОД ТЕЛЕФОН И ПК", "01 / Что я делаю": "01 / Что я делаю", "Не шаблон.": "Не шаблон.", "Под ваш бизнес.": "Под ваш бизнес.", "Дизайн под вкус бизнеса": "Дизайн под вкус бизнеса", "Подберу стиль, цвета, структуру и атмосферу: от спокойной премиальности до яркой подачи.": "Подберу стиль, цвета, структуру и атмосферу: от спокойной премиальности до яркой подачи.", "Меню, фото, аудио": "Меню, фото, аудио", "Добавлю нужные блюда, услуги, галереи, музыку, кнопки, карты и контакты.": "Добавлю нужные блюда, услуги, галереи, музыку, кнопки, карты и контакты.", "Адаптация под устройства": "Адаптация под устройства", "Сайт удобно выглядит на телефоне, планшете и компьютере без вылезающих блоков.": "Сайт удобно выглядит на телефоне, планшете и компьютере без вылезающих блоков.", "Домен и запуск": "Домен и запуск", "Подключу бесплатный адрес или ваш купленный домен и помогу довести сайт до запуска.": "Подключу бесплатный адрес или ваш купленный домен и помогу довести сайт до запуска.", "Посмотреть полный список возможностей": "Посмотреть полный список возможностей", "02 / Как работаем": "02 / Как работаем", "От сообщения": "От сообщения", "до готового сайта.": "до готового сайта.", "Вы пишете мне": "Вы пишете мне", "Telegram — самый быстрый способ.": "Telegram — самый быстрый способ.", "Отправляете информацию": "Отправляете информацию", "Название, фото, меню, контакты и пожелания.": "Название, фото, меню, контакты и пожелания.", "Я собираю сайт": "Nd Web Studio собирает сайт", "Дизайн, адаптация, анимации и функционал.": "Дизайн, адаптация, анимации и функционал.", "Вы проверяете": "Вы проверяете", "Что нужно — исправляю бесплатно.": "Что нужно — исправляю бесплатно.", "03 / Реальные работы": "03 / Реальные работы", "Не обещания.": "Не обещания.", "Вот сайты.": "Вот сайты.", "Нажмите на проект — он откроется внутри большого окна.": "Нажмите на проект — он откроется внутри большого окна.", "САЙТ РЕСТОРАНА": "САЙТ РЕСТОРАНА", "Атмосферный сайт ресторана с быстрым контактом.": "Атмосферный сайт ресторана с быстрым контактом.", "Большая адаптивная презентация ресторана.": "Большая адаптивная презентация ресторана.", "Современная digital-витрина для бизнеса.": "Современная digital-витрина для бизнеса.", "САЙТ ДЛЯ БИЗНЕСА": "САЙТ ДЛЯ БИЗНЕСА", "Современный сайт National Instrumental Group с адаптацией под устройства.": "Современный сайт National Instrumental Group с адаптацией под устройства.", "Современный сайт MeatMe Restaurant с адаптацией под устройства.": "Современный сайт MeatMe Restaurant с адаптацией под устройства.", "Современный сайт Buyukada Restaurant с адаптацией под устройства.": "Современный сайт Buyukada Restaurant с адаптацией под устройства.", "04 / Стоимость": "04 / Стоимость", "Прозрачно, без агентской накрутки.": "Прозрачно, без агентской накрутки.", "Сайт для бизнеса": "Сайт для бизнеса", "от": "от", "сум": "сум", "Индивидуальный дизайн": "Индивидуальный дизайн", "Адаптация под телефон": "Адаптация под телефон", "Бесплатные правки": "Бесплатные правки", "Помощь с доменом": "Помощь с доменом", "Обсудить мой сайт": "Обсудить мой сайт", "05 / Вопросы": "05 / Вопросы", "Перед тем,": "Перед тем,", "как написать.": "как написать.", "Правда можно сделать сайт за один день?": "Правда можно сделать сайт за один день?", "Да, если у вас уже есть основная информация, фото и понятная структура. Более сложные сайты могут потребовать больше времени.": "Да, если у вас уже есть основная информация, фото и понятная структура. Более сложные сайты могут потребовать больше времени.", "Что можно изменить после готовности?": "Что можно изменить после готовности?", "Текст, фотографии, блоки, порядок, цвета и другие нужные детали можно поправить в рамках проекта.": "Текст, фотографии, блоки, порядок, цвета и другие нужные детали можно поправить в рамках проекта.", "Можно использовать свой домен?": "Можно использовать свой домен?", "Да. Можно оставить бесплатный адрес или подключить купленный домен, например .com или .uz.": "Да. Можно оставить бесплатный адрес или подключить купленный домен, например .com или .uz.", "Вы делаете только рестораны?": "Вы делаете только рестораны?", "Нет. Рестораны — текущие примеры Nd Web Studio, но сайт можно сделать для почти любого понятного бизнеса или услуги.": "Нет. Рестораны — текущие примеры Nd Web Studio, но сайт можно сделать для почти любого понятного бизнеса или услуги.", "Есть бизнес?": "Есть бизнес?", "Давайте сделаем ему": "Давайте сделаем ему", "нормальный сайт.": "нормальный сайт.", "Написать в Nd Web Studio": "Написать в Telegram", "Telegram-канал ↗": "Telegram-канал ↗", "Instagram ↗": "Instagram ↗", "Nd Web Studio · веб-сайты для бизнеса": "Nd Web Studio · веб-сайты для бизнеса", "Наверх ↑": "Наверх ↑", "Открыть отдельно ↗": "Открыть отдельно ↗", "Возможности": "Возможности", "Контакты": "Контакты", "Что можно добавить": "Что можно добавить", "Сайт собирается вокруг вашего бизнеса.": "Сайт собирается вокруг вашего бизнеса.", "Онлайн-меню": "Онлайн-меню", "Фотогалерея": "Фотогалерея", "Карта и маршрут": "Карта и маршрут", "Telegram-кнопки": "Telegram-кнопки", "Звонок в 1 касание": "Звонок в 1 касание", "Музыка и звуки": "Музыка и звуки", "Анимации": "Анимации", "Несколько языков": "Несколько языков", "Отзывы": "Отзывы", "Соцсети": "Соцсети", "Домен": "Домен", "Адаптация": "Адаптация", "Хочу обсудить свой сайт ↗": "Хочу обсудить свой сайт ↗", "Связь": "Связь", "Отправьте информацию о бизнесе — и начнём.": "Отправьте информацию о бизнесе — и начнём.", "Название бизнеса и чем вы занимаетесь": "Название бизнеса и чем вы занимаетесь", "Фотографии, меню или список услуг": "Фотографии, меню или список услуг", "Контакты и адрес": "Контакты и адрес", "Примеры сайтов или стиль, который нравится": "Примеры сайтов или стиль, который нравится"
+      },
+      uz: {}, en: {}
+    };
+    Object.assign(translations.uz, {
+      "ND Web Studio — сайты для бизнеса": "ND Web Studio — biznes uchun saytlar", "Web Studio": "Web Studio", "Digital for business": "Biznes uchun digital", "Услуги": "Xizmatlar", "Проекты": "Loyihalar", "Цена": "Narx", "Обсудить сайт ↗": "Saytni muhokama qilish ↗", "Сайты для бизнеса · Ташкент / онлайн": "Biznes uchun saytlar · Toshkent / onlayn", "Ваш бизнес.": "Sizning biznesingiz.", "Но уже в интернете.": "Endi internetda.", "Nd Web Studio создаёт современные сайты для ресторанов и других бизнесов: под ваш стиль, с нужными фото, меню, музыкой, контактами и функциями.": "Nd Web Studio restoranlar va boshqa bizneslar uchun zamonaviy saytlar yaratadi: sizning uslubingiz, fotosuratlaringiz, menyu, musiqa, kontaktlar va kerakli funksiyalar bilan.", "Заказать сайт": "Sayt buyurtma qilish", "Смотреть проекты": "Loyihalarni ko‘rish", "Telegram": "Telegram", "Главная": "Bosh sahifa", "Навигация": "Navigatsiya", "Контакты": "Aloqa", "Договорная цена": "Kelishilgan narx", "Сайт от 1 дня": "Sayt 1 kundan", "Правки бесплатно": "Tuzatishlar bepul", "ЦИФРОВОЙ ОПЫТ": "RAQAMLI TAJRIBA", "Сайт, который": "Sayt, u", "выглядит дороже.": "qimmatroq ko‘rinadi.", "Открыть проект ↗": "Loyihani ochish ↗", "1 день": "1 kun", "на запуск": "ishga tushirishgacha", "ОНЛАЙН": "ONLAYN", "готов принимать клиентов": "mijozlarni qabul qilishga tayyor", "САЙТ ЗА 1 ДЕНЬ": "1 KUNDA SAYT", "ЛЮБОЙ ДИЗАЙН": "ISTALGAN DIZAYN", "БЕСПЛАТНЫЕ ПРАВКИ": "BEPUL TUZATISHLAR", "ДОМЕН ПОДКЛЮЧУ": "DOMEN ULAYMAN", "ПОД ТЕЛЕФОН И ПК": "TELEFON VA KOMPYUTER UCHUN", "01 / Что я делаю": "01 / Men nima qilaman", "Не шаблон.": "Shablon emas.", "Под ваш бизнес.": "Sizning biznesingiz uchun.", "Дизайн под вкус бизнеса": "Biznesingiz didiga mos dizayn", "Подберу стиль, цвета, структуру и атмосферу: от спокойной премиальности до яркой подачи.": "Uslub, ranglar, tuzilma va atmosferani biznesingizga moslab tanlayman: sokin premium uslubdan yorqin taqdimotgacha.", "Меню, фото, аудио": "Menyu, foto, audio", "Добавлю нужные блюда, услуги, галереи, музыку, кнопки, карты и контакты.": "Kerakli taomlar, xizmatlar, galereyalar, musiqa, tugmalar, xarita va kontaktlarni qo‘shaman.", "Адаптация под устройства": "Qurilmalarga moslashuv", "Сайт удобно выглядит на телефоне, планшете и компьютере без вылезающих блоков.": "Sayt telefon, planshet va kompyuterda qulay ko‘rinadi, bloklar ekrandan chiqib ketmaydi.", "Домен и запуск": "Domen va ishga tushirish", "Подключу бесплатный адрес или ваш купленный домен и помогу довести сайт до запуска.": "Bepul manzil yoki sotib olingan domeningizni ulayman va saytni ishga tushirishgacha yordam beraman.", "Посмотреть полный список возможностей": "Barcha imkoniyatlarni ko‘rish", "02 / Как работаем": "02 / Qanday ishlaymiz", "От сообщения": "Xabardan", "до готового сайта.": "tayyor saytgacha.", "Вы пишете мне": "Siz yozasiz", "Telegram — самый быстрый способ.": "Telegram — eng tezkor usul.", "Отправляете информацию": "Ma’lumot yuborasiz", "Название, фото, меню, контакты и пожелания.": "Nomi, foto, menyu, kontaktlar va istaklar.", "Я собираю сайт": "Nd Web Studio saytni yaratadi", "Дизайн, адаптация, анимации и функционал.": "Dizayn, moslashuv, animatsiyalar va funksiyalar.", "Вы проверяете": "Siz tekshirasiz", "Что нужно — исправляю бесплатно.": "Kerakli joylarni bepul tuzataman.", "03 / Реальные работы": "03 / Haqiqiy loyihalar", "Не обещания.": "Va’dalar emas.", "Вот сайты.": "Mana saytlar.", "Нажмите на проект — он откроется внутри большого окна.": "Loyihani bosing — u katta oynada ochiladi.", "САЙТ РЕСТОРАНА": "RESTORAN SAYTI", "Атмосферный сайт ресторана с быстрым контактом.": "Tezkor aloqa bilan restoran uchun atmosferali sayt.", "Большая адаптивная презентация ресторана.": "Restoran uchun katta va moslashuvchan taqdimot sayti.", "Современная digital-витрина для бизнеса.": "Biznes uchun zamonaviy raqamli vitrina.", "04 / Стоимость": "04 / Narx", "Прозрачно, без агентской накрутки.": "Shaffof narx, agentlik ustamasiz.", "Сайт для бизнеса": "Biznes uchun sayt", "от": "dan", "сум": "so‘m", "Индивидуальный дизайн": "Individual dizayn", "Адаптация под телефон": "Telefon uchun moslashuv", "Бесплатные правки": "Bepul tuzatishlar", "Помощь с доменом": "Domen bo‘yicha yordam", "Обсудить мой сайт": "Saytimni muhokama qilish", "05 / Вопросы": "05 / Savollar", "Перед тем,": "Yozishdan", "как написать.": "oldin.", "Правда можно сделать сайт за один день?": "Saytni bir kunda qilish mumkinmi?", "Да, если у вас уже есть основная информация, фото и понятная структура. Более сложные сайты могут потребовать больше времени.": "Ha, agar asosiy ma’lumotlar, fotosuratlar va aniq tuzilma tayyor bo‘lsa. Murakkab saytlar ko‘proq vaqt talab qilishi mumkin.", "Что можно изменить после готовности?": "Tayyor bo‘lgandan keyin nimani o‘zgartirish mumkin?", "Текст, фотографии, блоки, порядок, цвета и другие нужные детали можно поправить в рамках проекта.": "Matn, fotosuratlar, bloklar, tartib, ranglar va boshqa kerakli tafsilotlarni loyiha doirasida tuzatish mumkin.", "Можно использовать свой домен?": "O‘z domenimdan foydalanish mumkinmi?", "Да. Можно оставить бесплатный адрес или подключить купленный домен, например .com или .uz.": "Ha. Bepul manzilni qoldirish yoki sotib olingan domenni, masalan .com yoki .uz ni ulash mumkin.", "Вы делаете только рестораны?": "Siz faqat restoranlar uchun sayt qilasizmi?", "Нет. Рестораны — текущие примеры Nd Web Studio, но сайт можно сделать для почти любого понятного бизнеса или услуги.": "Yo‘q. Restoranlar — Nd Web Studio’ning hozirgi namunalari, ammo sayt deyarli har qanday tushunarli biznes yoki xizmat uchun tayyorlanishi mumkin.", "Есть бизнес?": "Biznesingiz bormi?", "Давайте сделаем ему": "Keling, unga", "нормальный сайт.": "yaxshi sayt qilamiz.", "Написать в Nd Web Studio": "Telegram orqali yozish", "Telegram-канал ↗": "Telegram kanal ↗", "Instagram ↗": "Instagram ↗", "Nd Web Studio · веб-сайты для бизнеса": "Nd Web Studio · biznes uchun saytlar", "Наверх ↑": "Yuqoriga ↑", "Открыть отдельно ↗": "Alohida ochish ↗", "Возможности": "Imkoniyatlar", "Контакты": "Aloqa", "Что можно добавить": "Nimalarni qo‘shish mumkin", "Сайт собирается вокруг вашего бизнеса.": "Sayt biznesingiz atrofida quriladi.", "Онлайн-меню": "Onlayn menyu", "Фотогалерея": "Fotogalereya", "Карта и маршрут": "Xarita va yo‘nalish", "Telegram-кнопки": "Telegram tugmalari", "Звонок в 1 касание": "Bir bosishda qo‘ng‘iroq", "Музыка и звуки": "Musiqa va tovushlar", "Анимации": "Animatsiyalar", "Несколько языков": "Bir nechta til", "Отзывы": "Sharhlar", "Соцсети": "Ijtimoiy tarmoqlar", "Домен": "Domen", "Адаптация": "Moslashuv", "Хочу обсудить свой сайт ↗": "Saytimni muhokama qilmoqchiman ↗", "Связь": "Aloqa", "Отправьте информацию о бизнесе — и начнём.": "Biznesingiz haqidagi ma’lumotlarni yuboring — boshlaymiz.", "Название бизнеса и чем вы занимаетесь": "Biznes nomi va faoliyatingiz", "Фотографии, меню или список услуг": "Fotosuratlar, menyu yoki xizmatlar ro‘yxati", "Контакты и адрес": "Kontaktlar va manzil", "САЙТ ДЛЯ БИЗНЕСА": "BIZNES UCHUN SAYT", "Современный сайт National Instrumental Group с адаптацией под устройства.": "National Instrumental Group uchun zamonaviy, qurilmalarga mos sayt.", "САЙТ РЕСТОРАНА": "RESTORAN SAYTI", "Современный сайт MeatMe Restaurant с адаптацией под устройства.": "MeatMe Restaurant uchun zamonaviy, qurilmalarga mos sayt.", "Современный сайт Buyukada Restaurant с адаптацией под устройства.": "Buyukada Restaurant uchun zamonaviy, qurilmalarga mos sayt.", "Примеры сайтов или стиль, который нравится": "Yoqadigan saytlar yoki uslub namunalari"
+    });
+    Object.assign(translations.en, {
+      "ND Web Studio — сайты для бизнеса": "ND Web Studio — business websites", "Web Studio": "Web Studio", "Digital for business": "Digital for business", "Услуги": "Services", "Проекты": "Projects", "Цена": "Pricing", "Обсудить сайт ↗": "Discuss a website ↗", "Сайты для бизнеса · Ташкент / онлайн": "Business websites · Tashkent / online", "Ваш бизнес.": "Your business.", "Но уже в интернете.": "Now online.", "Nd Web Studio создаёт современные сайты для ресторанов и других бизнесов: под ваш стиль, с нужными фото, меню, музыкой, контактами и функциями.": "Nd Web Studio creates modern websites for restaurants and other businesses: tailored to your style, with your photos, menu, music, contacts and features.", "Заказать сайт": "Order a website", "Смотреть проекты": "View projects", "Telegram": "Telegram", "Главная": "Home", "Навигация": "Navigation", "Контакты": "Contact", "Договорная цена": "Negotiable price", "Сайт от 1 дня": "Website from 1 day", "Правки бесплатно": "Free revisions", "ЦИФРОВОЙ ОПЫТ": "DIGITAL EXPERIENCE", "Сайт, который": "A website that", "выглядит дороже.": "looks more premium.", "Открыть проект ↗": "Open project ↗", "1 день": "1 day", "на запуск": "to launch", "ОНЛАЙН": "ONLINE", "готов принимать клиентов": "ready to receive clients", "САЙТ ЗА 1 ДЕНЬ": "WEBSITE IN 1 DAY", "ЛЮБОЙ ДИЗАЙН": "ANY DESIGN", "БЕСПЛАТНЫЕ ПРАВКИ": "FREE REVISIONS", "ДОМЕН ПОДКЛЮЧУ": "DOMAIN SETUP", "ПОД ТЕЛЕФОН И ПК": "MOBILE & DESKTOP", "01 / Что я делаю": "01 / What I do", "Не шаблон.": "Not a template.", "Под ваш бизнес.": "Built for your business.", "Дизайн под вкус бизнеса": "Design that fits your business", "Подберу стиль, цвета, структуру и атмосферу: от спокойной премиальности до яркой подачи.": "I tailor the style, colors, structure and atmosphere — from calm premium to bold and vibrant.", "Меню, фото, аудио": "Menu, photos, audio", "Добавлю нужные блюда, услуги, галереи, музыку, кнопки, карты и контакты.": "I add the dishes, services, galleries, music, buttons, maps and contacts you need.", "Адаптация под устройства": "Responsive design", "Сайт удобно выглядит на телефоне, планшете и компьютере без вылезающих блоков.": "The website works comfortably on phones, tablets and computers without overflowing elements.", "Домен и запуск": "Domain & launch", "Подключу бесплатный адрес или ваш купленный домен и помогу довести сайт до запуска.": "I can connect a free address or your purchased domain and help take the site live.", "Посмотреть полный список возможностей": "View all capabilities", "02 / Как работаем": "02 / How it works", "От сообщения": "From a message", "до готового сайта.": "to a finished website.", "Вы пишете мне": "You message us", "Telegram — самый быстрый способ.": "Telegram is the fastest way.", "Отправляете информацию": "You send the information", "Название, фото, меню, контакты и пожелания.": "Name, photos, menu, contacts and requirements.", "Я собираю сайт": "Nd Web Studio builds the site", "Дизайн, адаптация, анимации и функционал.": "Design, responsive layout, animations and functionality.", "Вы проверяете": "You review it", "Что нужно — исправляю бесплатно.": "We fix what is needed for free.", "03 / Реальные работы": "03 / Real work", "Не обещания.": "No promises.", "Вот сайты.": "Here are the sites.", "Нажмите на проект — он откроется внутри большого окна.": "Click a project — it opens inside a large window.", "САЙТ РЕСТОРАНА": "RESTAURANT WEBSITE", "Атмосферный сайт ресторана с быстрым контактом.": "Atmospheric restaurant website with quick contact.", "Большая адаптивная презентация ресторана.": "Large responsive restaurant presentation.", "Современная digital-витрина для бизнеса.": "Modern digital storefront for a business.", "04 / Стоимость": "04 / Pricing", "Прозрачно, без агентской накрутки.": "Transparent pricing, no agency markup.", "Сайт для бизнеса": "Business website", "от": "from", "сум": "UZS", "Индивидуальный дизайн": "Custom design", "Адаптация под телефон": "Mobile responsive", "Бесплатные правки": "Free revisions", "Помощь с доменом": "Domain assistance", "Обсудить мой сайт": "Discuss my website", "05 / Вопросы": "05 / Questions", "Перед тем,": "Before", "как написать.": "you message.", "Правда можно сделать сайт за один день?": "Can a website really be made in one day?", "Да, если у вас уже есть основная информация, фото и понятная структура. Более сложные сайты могут потребовать больше времени.": "Yes, if you already have the main information, photos and a clear structure. More complex websites may take longer.", "Что можно изменить после готовности?": "What can be changed after delivery?", "Текст, фотографии, блоки, порядок, цвета и другие нужные детали можно поправить в рамках проекта.": "Text, photos, sections, order, colors and other needed details can be revised within the project.", "Можно использовать свой домен?": "Can I use my own domain?", "Да. Можно оставить бесплатный адрес или подключить купленный домен, например .com или .uz.": "Yes. You can keep a free address or connect a purchased domain such as .com or .uz.", "Вы делаете только рестораны?": "Do you only make restaurant websites?", "Нет. Рестораны — текущие примеры Nd Web Studio, но сайт можно сделать для почти любого понятного бизнеса или услуги.": "No. Restaurants are current Nd Web Studio examples, but a website can be made for almost any clear business or service.", "Есть бизнес?": "Have a business?", "Давайте сделаем ему": "Let's give it", "нормальный сайт.": "a proper website.", "Написать в Nd Web Studio": "Message us on Telegram", "Telegram-канал ↗": "Telegram channel ↗", "Instagram ↗": "Instagram ↗", "Nd Web Studio · веб-сайты для бизнеса": "Nd Web Studio · business websites", "Наверх ↑": "Back to top ↑", "Открыть отдельно ↗": "Open separately ↗", "Возможности": "Capabilities", "Контакты": "Contact", "Что можно добавить": "What can be added", "Сайт собирается вокруг вашего бизнеса.": "The website is built around your business.", "Онлайн-меню": "Online menu", "Фотогалерея": "Photo gallery", "Карта и маршрут": "Map & directions", "Telegram-кнопки": "Telegram buttons", "Звонок в 1 касание": "One-tap calling", "Музыка и звуки": "Music & sounds", "Анимации": "Animations", "Несколько языков": "Multiple languages", "Отзывы": "Reviews", "Соцсети": "Social media", "Домен": "Domain", "Адаптация": "Responsive layout", "Хочу обсудить свой сайт ↗": "I want to discuss my website ↗", "Связь": "Contact", "Отправьте информацию о бизнесе — и начнём.": "Send your business information — let's start.", "Название бизнеса и чем вы занимаетесь": "Business name and what you do", "Фотографии, меню или список услуг": "Photos, menu or service list", "Контакты и адрес": "Contacts and address", "САЙТ ДЛЯ БИЗНЕСА": "BUSINESS WEBSITE", "Современный сайт National Instrumental Group с адаптацией под устройства.": "A modern responsive website for National Instrumental Group.", "САЙТ РЕСТОРАНА": "RESTAURANT WEBSITE", "Современный сайт MeatMe Restaurant с адаптацией под устройства.": "A modern responsive website for MeatMe Restaurant.", "Современный сайт Buyukada Restaurant с адаптацией под устройства.": "A modern responsive website for Buyukada Restaurant.", "Примеры сайтов или стиль, который нравится": "Example websites or a style you like"
+    });
+    function ping(f = 540) {try {const C = window.AudioContext || window.webkitAudioContext; if (!C) return; const c = new C(), o = c.createOscillator(), g = c.createGain(); o.frequency.value = f; g.gain.setValueAtTime(.0001, c.currentTime); g.gain.exponentialRampToValueAtTime(.045, c.currentTime + .01); g.gain.exponentialRampToValueAtTime(.0001, c.currentTime + .12); o.connect(g); g.connect(c.destination); o.start(); o.stop(c.currentTime + .13); setTimeout(() => c.close(), 200)} catch (e) { } }
+    function t(text) {return (translations[currentLang] && translations[currentLang][text]) || text}
+    const overlay = document.getElementById("overlay"), content = document.getElementById("modal-content"), address = document.getElementById("modal-address"), closeBtn = document.getElementById("close");
+    const menuBtn = document.getElementById("menu-btn"), menuPanel = document.getElementById("menu-panel");
+    function toggleMenu(force) {const open = typeof force === "boolean" ? force : !menuPanel.classList.contains("show"); menuPanel.classList.toggle("show", open); menuPanel.setAttribute("aria-hidden", String(!open)); menuBtn.setAttribute("aria-expanded", String(open)); if (open) ping(760);}
+    function showProject(id) {
+      const p = projects[id]; if (!p) return; ping();
+      address.textContent = p.url.replace(/^https?:\/\//, '');
+      content.innerHTML = `<div class="project-modal"><iframe src="${p.url}" title="${p.title}" loading="lazy"></iframe><aside><span><b>${p.title}</b><small>${t(p.note)}</small></span><a href="${p.url}" target="_blank" rel="noopener">${t("Открыть отдельно ↗")}</a></aside></div>`;
+      overlay.classList.add("show"); document.body.classList.add("modal-open");
+    }
+    function showInfo(type) {
+      ping(); address.textContent = type === "services" ? t("Возможности") + " / Nd Web Studio" : t("Контакты") + " / Nd Web Studio";
+      if (type === "services") content.innerHTML = `<div class="text-modal"><p>${t("Что можно добавить")}</p><h3>${t("Сайт собирается вокруг вашего бизнеса.")}</h3><div class="caps">${["Онлайн-меню", "Фотогалерея", "Карта и маршрут", "Telegram-кнопки", "Звонок в 1 касание", "Музыка и звуки", "Анимации", "Несколько языков", "Отзывы", "Соцсети", "Домен", "Адаптация"].map(x => `<span>${t(x)}</span>`).join("")}</div><button data-modal="contact">${t("Хочу обсудить свой сайт ↗")}</button></div>`;
+      else content.innerHTML = `<div class="text-modal"><p>${t("Связь")}</p><h3>${t("Отправьте информацию о бизнесе — и начнём.")}</h3><ol><li>${t("Название бизнеса и чем вы занимаетесь")}</li><li>${t("Фотографии, меню или список услуг")}</li><li>${t("Контакты и адрес")}</li><li>${t("Примеры сайтов или стиль, который нравится")}</li></ol><a class="tg" href="https://t.me/Nodir01092011" target="_blank" rel="noopener">@Nodir01092011 ↗</a></div>`;
+      overlay.classList.add("show"); document.body.classList.add("modal-open");
+    }
+    function hide() {ping(360); overlay.classList.remove("show"); document.body.classList.remove("modal-open");}
+    function translateNode(node) {
+      if (!node.nodeValue || !node.nodeValue.trim()) return;
+      if (node.__ndOriginal === undefined) node.__ndOriginal = node.nodeValue;
+      const raw = node.__ndOriginal, key = raw.trim(), dict = translations[currentLang] || {};
+      let translated = dict[key];
+      if (!translated) {
+        const keys = Object.keys(dict).filter(k => k && key.includes(k)).sort((a, b) => b.length - a.length);
+        if (keys.length) {translated = key; for (const k of keys) translated = translated.split(k).join(dict[k]);}
+      }
+      node.nodeValue = translated ? raw.replace(key, translated) : raw;
+    }
+    function translatePage() {
+      document.documentElement.lang = currentLang;
+      const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
+        acceptNode(node) {
+          const p = node.parentElement; if (!p) return NodeFilter.FILTER_REJECT;
+          if (p.closest("script,style,iframe,.lang-switch")) return NodeFilter.FILTER_REJECT;
+          return NodeFilter.FILTER_ACCEPT;
+        }
+      });
+      const nodes = []; while (walker.nextNode()) nodes.push(walker.currentNode); nodes.forEach(translateNode);
+      document.querySelectorAll(".lang-switch button").forEach(b => b.classList.toggle("active", b.dataset.lang === currentLang));
+      document.title = t("ND Web Studio — сайты для бизнеса");
+      closeBtn.setAttribute("aria-label", {ru: "Закрыть", uz: "Yopish", en: "Close"}[currentLang] || "Close");
+    }
+    function initSite() {
+      try {currentLang = localStorage.getItem("nd-lang") || "ru";} catch (e) {currentLang = "ru";}
+      if (!translations[currentLang]) currentLang = "ru";
+      document.addEventListener("click", function (e) {
+        const mb = e.target.closest("#menu-btn");
+        if (mb) {e.preventDefault(); e.stopPropagation(); toggleMenu(); return;}
+        const ma = e.target.closest("#menu-panel a");
+        if (ma) {ping(680); toggleMenu(false); return;}
+        if (menuPanel.classList.contains("show") && !e.target.closest("#menu-panel")) {toggleMenu(false);}
+        const lang = e.target.closest(".lang-switch button");
+        if (lang) {e.preventDefault(); e.stopPropagation(); currentLang = lang.dataset.lang || "ru"; try {localStorage.setItem("nd-lang", currentLang)} catch (e) { }; ping(700); translatePage(); if (overlay.classList.contains("show")) hide(); return;}
+        const project = e.target.closest("[data-project]"); if (project) {e.preventDefault(); showProject(project.dataset.project); return;}
+        const modal = e.target.closest("[data-modal]"); if (modal) {e.preventDefault(); showInfo(modal.dataset.modal); return;}
+        if (e.target.closest("#close")) {e.preventDefault(); hide(); return;}
+        if (e.target === overlay) {hide(); return;}
+        const faq = e.target.closest(".faq-item");
+        if (faq) {ping(470 + Math.max(0, Array.from(document.querySelectorAll(".faq-item")).indexOf(faq)) * 30); const was = faq.classList.contains("open"); document.querySelectorAll(".faq-item").forEach(y => {y.classList.remove("open"); const i = y.querySelector("i"); if (i) i.textContent = "+";}); if (!was) {faq.classList.add("open"); const i = faq.querySelector("i"); if (i) i.textContent = "−";} return;}
+        if (e.target.closest("a,button")) ping(620);
+      }, true);
+      document.addEventListener("keydown", e => {if (e.key === "Escape" && overlay.classList.contains("show")) hide(); if (e.key === "Escape" && menuPanel.classList.contains("show")) toggleMenu(false);});
+      translatePage();
+    }
+    if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", initSite, {once: true}); else initSite();
+  </script>
+</body>
+
+</html>
